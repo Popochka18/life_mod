@@ -1,9 +1,10 @@
 package com.lifemod.client
 
+import com.lifemod.client.render.LifeModClientRenderers
 import net.fabricmc.api.ClientModInitializer
 
 object LifeModClient : ClientModInitializer {
-	override fun onInitializeClient() {
-		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
-	}
+    override fun onInitializeClient() {
+        LifeModClientRenderers.init()
+    }
 }
