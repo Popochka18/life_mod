@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:gunpowder",
+    "minecraft:paper"
+  ],
+  "result": {
+    "id": "life-mod:powder_pouch",
+    "count": 4
+  }
+}

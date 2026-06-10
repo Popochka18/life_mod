@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "C"
+  ],
+  "key": {
+    "C": "minecraft:sugar_cane"
+  },
+  "result": {
+    "id": "life-mod:blowgun"
+  }
+}
