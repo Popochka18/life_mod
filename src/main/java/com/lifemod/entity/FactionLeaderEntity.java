@@ -35,7 +35,12 @@ public class FactionLeaderEntity extends FactionVillagerEntity {
 
     @Override
     protected InteractionResult mobInteract(Player player, InteractionHand hand) {
-        if (this.level().isClientSide()) {
+        return leaderInteract(this, player, hand);
+    }
+
+    /** Quest/deed dialog, also used by elf and vegir members that happen to be leaders. */
+    public static InteractionResult leaderInteract(FactionVillagerEntity leader, Player player, InteractionHand hand) {
+        if (leader.level().isClientSide()) {
             return InteractionResult.SUCCESS;
         }
 
@@ -47,7 +52,7 @@ public class FactionLeaderEntity extends FactionVillagerEntity {
 
         // Buying a house: pay DEED_PRICE emeralds while sneaking, requires high reputation.
         if (player.isShiftKeyDown() && held.is(Items.EMERALD)) { // VERIFY-MAPPING: Player#isShiftKeyDown
-            Faction faction = this.getFaction();
+            Faction faction = leader.getFaction();
 
             if (!ReputationApi.canBuyHouse(serverPlayer, faction)) {
                 serverPlayer.sendSystemMessage(Component.translatable("message.life-mod.deed.reputation",
@@ -65,7 +70,7 @@ public class FactionLeaderEntity extends FactionVillagerEntity {
             return InteractionResult.SUCCESS;
         }
 
-        QuestApi.interact(serverPlayer, this.getFaction());
+        QuestApi.interact(serverPlayer, leader.getFaction());
         return InteractionResult.SUCCESS;
     }
 }

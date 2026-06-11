@@ -50,6 +50,12 @@ public final class ModSpawns {
                 MobCategory.CREATURE, ModEntities.BANDIT, 4, 2, 3);
         BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(),
                 MobCategory.CREATURE, ModEntities.WILDLING, 4, 2, 3);
+        BiomeModifications.addSpawn(BiomeSelectors.tag(ConventionalBiomeTags.IS_JUNGLE),
+                MobCategory.CREATURE, ModEntities.ELF, 10, 2, 4);
+        BiomeModifications.addSpawn(BiomeSelectors.tag(ConventionalBiomeTags.IS_TAIGA),
+                MobCategory.CREATURE, ModEntities.VEGIR, 10, 2, 4);
+        BiomeModifications.addSpawn(BiomeSelectors.tag(ConventionalBiomeTags.IS_SNOWY),
+                MobCategory.CREATURE, ModEntities.VEGIR, 10, 2, 4);
         BiomeModifications.addSpawn(BiomeSelectors.tag(ConventionalBiomeTags.IS_BEACH),
                 MobCategory.CREATURE, ModEntities.PIRATE, 15, 2, 4);
         BiomeModifications.addSpawn(BiomeSelectors.tag(ConventionalBiomeTags.IS_BEACH),

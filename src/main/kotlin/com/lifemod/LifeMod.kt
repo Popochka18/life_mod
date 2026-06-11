@@ -1,5 +1,6 @@
 package com.lifemod
 
+import com.lifemod.faction.BanditRaids
 import com.lifemod.faction.FactionEvents
 import com.lifemod.faction.WarEvents
 import com.lifemod.quest.QuestEvents
@@ -26,6 +27,7 @@ object LifeMod : ModInitializer {
 
         FactionEvents.init()
         WarEvents.init()
+        BanditRaids.init()
         QuestEvents.init()
         TavernEvents.init()
 

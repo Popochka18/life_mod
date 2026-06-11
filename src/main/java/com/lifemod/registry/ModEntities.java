@@ -2,7 +2,9 @@ package com.lifemod.registry;
 
 import com.lifemod.LifeModIds;
 import com.lifemod.entity.BanditEntity;
+import com.lifemod.entity.ElfEntity;
 import com.lifemod.entity.FactionLeaderEntity;
+import com.lifemod.entity.VegirEntity;
 import com.lifemod.entity.FactionVillagerEntity;
 import com.lifemod.entity.GoblinEntity;
 import com.lifemod.entity.InnkeeperEntity;
@@ -63,6 +65,12 @@ public final class ModEntities {
             FactionVillagerEntity::createAttributes);
     public static final EntityType<MusketeerEntity> MUSKETEER = registerMob("musketeer",
             MusketeerEntity::new, MobCategory.CREATURE, 0.6f, 1.95f,
+            FactionVillagerEntity::createAttributes);
+    public static final EntityType<ElfEntity> ELF = registerMob("elf",
+            ElfEntity::new, MobCategory.CREATURE, 0.6f, 1.95f,
+            FactionVillagerEntity::createAttributes);
+    public static final EntityType<VegirEntity> VEGIR = registerMob("vegir",
+            VegirEntity::new, MobCategory.CREATURE, 0.6f, 1.95f,
             FactionVillagerEntity::createAttributes);
     public static final EntityType<GoblinEntity> GOBLIN = registerMob("goblin",
             GoblinEntity::new, MobCategory.MONSTER, 0.5f, 1.2f,
