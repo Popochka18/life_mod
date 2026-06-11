@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "life-mod:dwarf_hall",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 40,
+    "separation": 12,
+    "salt": 19461092
+  }
+}

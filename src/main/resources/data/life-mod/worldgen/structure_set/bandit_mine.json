@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "life-mod:bandit_mine",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 36,
+    "separation": 10,
+    "salt": 19461183
+  }
+}
