@@ -13,6 +13,8 @@
   "item.life-mod.musket_ball": "Пуля",
   "item.life-mod.powder_pouch": "Мешочек с порохом",
   "item.life-mod.house_deed": "Купчая на дом",
+  "item.life-mod.raw_deer_meat": "Сырая оленина",
+  "item.life-mod.cooked_deer_meat": "Жареная оленина",
 
   "entity.life-mod.faction_villager": "Житель",
   "entity.life-mod.faction_leader": "Лидер поселения",

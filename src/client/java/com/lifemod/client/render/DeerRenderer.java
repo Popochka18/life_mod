@@ -2,22 +2,15 @@ package com.lifemod.client.render;
 
 import com.lifemod.entity.passive.DeerEntity;
 
-import net.minecraft.client.model.geom.ModelLayers;
-// VERIFY-MAPPING: cow model package, expect net.minecraft.client.model.animal.cow.AdultCowModel
-// (follows the verified chicken pattern: net.minecraft.client.model.animal.chicken.AdultChickenModel)
-import net.minecraft.client.model.animal.cow.AdultCowModel;
-import net.minecraft.client.model.animal.cow.CowModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-// VERIFY-MAPPING: net.minecraft.client.renderer.entity.state.CowRenderState
-import net.minecraft.client.renderer.entity.state.CowRenderState;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.Identifier;
 
-/** Placeholder deer renderer on the vanilla cow model; a custom model is future work. */
-public class DeerRenderer extends MobRenderer<DeerEntity, DeerRenderer.State, CowModel> {
+/** Renders the deer with the mod's own model (see {@link DeerModel}). */
+public class DeerRenderer extends MobRenderer<DeerEntity, DeerRenderer.State, DeerModel> {
     public DeerRenderer(EntityRendererProvider.Context context) {
-        // VERIFY-MAPPING: ModelLayers.COW
-        super(context, new AdultCowModel(context.bakeLayer(ModelLayers.COW)), 0.6f);
+        super(context, new DeerModel(context.bakeLayer(DeerModel.LAYER)), 0.6f);
     }
 
     @Override
@@ -36,7 +29,7 @@ public class DeerRenderer extends MobRenderer<DeerEntity, DeerRenderer.State, Co
         renderState.texture = entity.getTexture();
     }
 
-    public static class State extends CowRenderState {
+    public static class State extends LivingEntityRenderState {
         public Identifier texture;
     }
 }

@@ -37,6 +37,8 @@ public final class ModCreativeTabs {
                     entries.accept(ModItems.MUSKET_BALL);
                     entries.accept(ModItems.POWDER_POUCH);
                     entries.accept(ModItems.HOUSE_DEED);
+                    entries.accept(ModItems.RAW_DEER_MEAT);
+                    entries.accept(ModItems.COOKED_DEER_MEAT);
                 })
                 .build());
     }

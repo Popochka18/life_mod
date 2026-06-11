@@ -13,6 +13,8 @@
   "item.life-mod.musket_ball": "Musket Ball",
   "item.life-mod.powder_pouch": "Powder Pouch",
   "item.life-mod.house_deed": "House Deed",
+  "item.life-mod.raw_deer_meat": "Raw Deer Meat",
+  "item.life-mod.cooked_deer_meat": "Cooked Deer Meat",
 
   "entity.life-mod.faction_villager": "Villager",
   "entity.life-mod.faction_leader": "Settlement Leader",

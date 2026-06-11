@@ -7,7 +7,6 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:leather",
-          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -26,8 +25,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:beef",
-          "weight": 1,
+          "name": "life-mod:raw_deer_meat",
           "functions": [
             {
               "function": "minecraft:set_count",
