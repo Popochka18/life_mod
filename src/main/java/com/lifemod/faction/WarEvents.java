@@ -6,21 +6,109 @@ import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Commands to inspect and steer the faction systems:
  * /lifemod rep — show reputation,
  * /lifemod war declare|peace <a> <b> — manage wars (op only),
  * /lifemod war list — list active wars.
+ *
+ * Neutral factions also declare wars and make peace on their own
+ * roughly every half hour; everyone online is notified.
  */
 public final class WarEvents {
+    private static final long AUTO_WAR_INTERVAL_TICKS = 20L * 60L * 30L;
+
     private WarEvents() {
     }
 
     public static void init() {
+        registerCommands();
+        registerAutoWars();
+    }
+
+    private static void registerAutoWars() {
+        ServerTickEvents.END_LEVEL_TICK.register(level -> {
+            if (level.dimension() != Level.OVERWORLD) {
+                return;
+            }
+
+            long gameTime = level.getGameTime(); // VERIFY-MAPPING: Level#getGameTime
+
+            if (gameTime == 0 || gameTime % AUTO_WAR_INTERVAL_TICKS != 0) {
+                return;
+            }
+
+            RandomSource random = level.getRandom();
+
+            if (random.nextInt(2) != 0) {
+                return; // diplomacy stays calm this time
+            }
+
+            WarState war = WarState.get(level.getServer());
+            List<Faction> neutrals = new ArrayList<>();
+
+            for (Faction faction : Faction.values()) {
+                if (faction.alignment() == Alignment.NEUTRAL) {
+                    neutrals.add(faction);
+                }
+            }
+
+            Faction initiator = neutrals.get(random.nextInt(neutrals.size()));
+
+            // A third of the time an existing war ends instead of a new one starting.
+            List<WarState.WarEntry> wars = war.wars();
+
+            if (!wars.isEmpty() && random.nextInt(3) == 0) {
+                WarState.WarEntry ended = wars.get(random.nextInt(wars.size()));
+                war.makePeace(ended.a(), ended.b());
+                broadcast(level, "message.life-mod.war.peace", ended.a(), ended.b());
+                return;
+            }
+
+            List<Faction> targets = new ArrayList<>();
+
+            for (Faction faction : Faction.values()) {
+                if (faction != initiator && faction.alignment() != Alignment.EVIL
+                        && !war.atWar(initiator, faction)) {
+                    targets.add(faction);
+                }
+            }
+
+            if (targets.isEmpty()) {
+                return;
+            }
+
+            Faction target = targets.get(random.nextInt(targets.size()));
+
+            if (war.declareWar(initiator, target)) {
+                broadcast(level, "message.life-mod.war.declared", initiator, target);
+            }
+        });
+    }
+
+    private static void broadcast(ServerLevel level, String key, Faction a, Faction b) {
+        Component message = Component.translatable(key,
+                Component.translatable(a.translationKey()),
+                Component.translatable(b.translationKey()));
+
+        // VERIFY-MAPPING: ServerLevel#players
+        for (ServerPlayer player : level.players()) {
+            player.sendSystemMessage(message);
+        }
+    }
+
+    private static void registerCommands() {
         CommandRegistrationCallback.EVENT.register((dispatcher, buildContext, selection) -> {
             dispatcher.register(Commands.literal("lifemod")
                     .then(Commands.literal("rep").executes(WarEvents::showReputation))
