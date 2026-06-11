@@ -22,6 +22,10 @@ public final class LifeModClientRenderers {
         EntityRendererRegistry.register(ModEntities.MUSKETEER, FactionNpcRenderer::new);
         EntityRendererRegistry.register(ModEntities.GOBLIN, FactionNpcRenderer::new);
 
+        // Elves and vegirs use the player model with player-format skins.
+        EntityRendererRegistry.register(ModEntities.ELF, HumanoidMonsterRenderer::new);
+        EntityRendererRegistry.register(ModEntities.VEGIR, HumanoidMonsterRenderer::new);
+
         // Monsters.
         EntityRendererRegistry.register(ModEntities.YETI, HumanoidMonsterRenderer::new);
         EntityRendererRegistry.register(ModEntities.MUMMY, HumanoidMonsterRenderer::new);

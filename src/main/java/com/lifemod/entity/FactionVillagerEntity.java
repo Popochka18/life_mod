@@ -98,9 +98,13 @@ public class FactionVillagerEntity extends PathfinderMob implements FactionMob, 
         this.setProfession(this.pickProfession(faction));
     }
 
+    /** Elves and vegirs use the player model and have their own entity types. */
+    private static final java.util.Set<Faction> DEDICATED_FACTIONS =
+            java.util.EnumSet.of(Faction.ELVES, Faction.VEGIRS);
+
     /** Subclasses (leaders, innkeepers, mercenaries) override to pin faction or profession. */
     protected Faction defaultFaction(Holder<Biome> biome) {
-        return Faction.pickForBiome(biome, this.getRandom());
+        return Faction.pickForBiome(biome, this.getRandom(), DEDICATED_FACTIONS);
     }
 
     protected String pickProfession(Faction faction) {
@@ -140,9 +144,19 @@ public class FactionVillagerEntity extends PathfinderMob implements FactionMob, 
         this.entityData.set(DATA_ENSLAVED, enslaved);
     }
 
+    protected void setSkin(String skin) {
+        this.entityData.set(DATA_SKIN, skin);
+    }
+
     @Override
     public Identifier getTexture() {
         Faction faction = this.getFaction();
+
+        // The Villagers faction are the classic vanilla villagers.
+        if (faction == Faction.VILLAGERS && !(this instanceof InnkeeperEntity)) {
+            return Identifier.withDefaultNamespace("textures/entity/villager/villager.png");
+        }
+
         String profession = this.getProfession().isEmpty() ? "villager" : this.getProfession();
         String path = faction.hasBiomeSkins()
                 ? "textures/entity/villager/" + faction.getSerializedName() + "/" + this.getSkin() + "/" + profession + ".png"

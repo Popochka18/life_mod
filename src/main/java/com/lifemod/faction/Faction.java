@@ -25,7 +25,7 @@ import java.util.Locale;
 public enum Faction {
     VILLAGERS(Alignment.GOOD, "chief",
             List.of("villager", "farmer", "butcher", "librarian", "priest", "smith", "guard", "innkeeper"),
-            List.of(ConventionalBiomeTags.IS_PLAINS, ConventionalBiomeTags.IS_FOREST), false),
+            List.of(), false),
     EGYPTIANS(Alignment.GOOD, "pharaoh",
             List.of("farmer", "sculptor", "scribe", "priest", "painter", "guard"),
             List.of(ConventionalBiomeTags.IS_DESERT), false),
@@ -42,7 +42,7 @@ public enum Faction {
             List.of("villager", "warrior", "hunter"),
             List.of(ConventionalBiomeTags.IS_SNOWY), false),
     VEGIRS(Alignment.NEUTRAL, "chief",
-            List.of("villager", "hunter", "trapper"),
+            List.of("villager", "hunter", "trapper", "warrior"),
             List.of(ConventionalBiomeTags.IS_TAIGA, ConventionalBiomeTags.IS_SNOWY), false),
     BANDITS(Alignment.EVIL, "ataman",
             List.of("bandit", "shieldbearer", "twisted_villager"),
@@ -135,10 +135,18 @@ public enum Faction {
 
     /** Picks a faction for a member spawning in the given biome; biome-bound factions are preferred over the "anywhere" ones. */
     public static Faction pickForBiome(Holder<Biome> biome, RandomSource random) {
+        return pickForBiome(biome, random, java.util.Set.of());
+    }
+
+    public static Faction pickForBiome(Holder<Biome> biome, RandomSource random, java.util.Set<Faction> exclude) {
         List<Faction> bound = new ArrayList<>();
         List<Faction> anywhere = new ArrayList<>();
 
         for (Faction faction : values()) {
+            if (exclude.contains(faction)) {
+                continue;
+            }
+
             if (faction.homeBiomes.isEmpty()) {
                 anywhere.add(faction);
             } else if (faction.likesBiome(biome)) {
