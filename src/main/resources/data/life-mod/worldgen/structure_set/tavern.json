@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "life-mod:tavern",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 40,
+    "separation": 12,
+    "salt": 19450770
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "life-mod:dwarf_well",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 36,
+    "separation": 10,
+    "salt": 19450924
+  }
+}

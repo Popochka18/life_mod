@@ -76,6 +76,7 @@
   "message.life-mod.deed.claimed": "Дом по координатам %1$s, %2$s, %3$s теперь ваш!",
   "message.life-mod.door.locked": "Дверь заперта. Эта комната принадлежит другому.",
   "message.life-mod.musket.no_ammo": "Для выстрела нужны пуля и мешочек с порохом.",
+  "message.life-mod.raid.warning": "Вдалеке слышны грубые голоса — разбойничья шайка устроила налёт!",
   "message.life-mod.rep.line": "%1$s: %2$s",
   "message.life-mod.war.line": "%1$s воюют с %2$s",
   "message.life-mod.war.declared": "%1$s объявили войну %2$s!",
