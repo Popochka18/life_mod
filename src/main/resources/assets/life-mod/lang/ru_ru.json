@@ -13,6 +13,8 @@
   "item.life-mod.musket_ball": "Пуля",
   "item.life-mod.powder_pouch": "Мешочек с порохом",
   "item.life-mod.house_deed": "Купчая на дом",
+  "item.life-mod.raw_deer_meat": "Сырая оленина",
+  "item.life-mod.cooked_deer_meat": "Жареная оленина",
 
   "entity.life-mod.faction_villager": "Житель",
   "entity.life-mod.faction_leader": "Лидер поселения",
@@ -81,5 +83,17 @@
   "message.life-mod.war.line": "%1$s воюют с %2$s",
   "message.life-mod.war.declared": "%1$s объявили войну %2$s!",
   "message.life-mod.war.peace": "%1$s заключили мир с %2$s.",
-  "message.life-mod.war.unchanged": "Между %1$s и %2$s ничего не изменилось."
+  "message.life-mod.war.unchanged": "Между %1$s и %2$s ничего не изменилось.",
+
+  "key.life-mod.journal": "Открыть журнал (квесты и фракции)",
+  "key.categories.life-mod.main": "Life Mod",
+  "key.category.life-mod.main": "Life Mod",
+  "screen.life-mod.journal.title": "Журнал",
+  "screen.life-mod.journal.reputation": "Репутация фракций",
+  "screen.life-mod.journal.no_reputation": "Ни одна фракция вас пока не знает.",
+  "screen.life-mod.journal.quests": "Активные квесты",
+  "screen.life-mod.journal.no_quests": "Нет активных квестов — поговорите с лидером поселения.",
+  "screen.life-mod.journal.quest.gather": "%1$s: принести %2$s × %3$s",
+  "screen.life-mod.journal.quest.kill": "%1$s: убить %2$s × %3$s",
+  "screen.life-mod.journal.quest.reward": "Награда: %1$s изумрудов, +%2$s репутации"
 }

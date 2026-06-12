@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": "life-mod:raw_deer_meat",
+  "result": {
+    "id": "life-mod:cooked_deer_meat"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

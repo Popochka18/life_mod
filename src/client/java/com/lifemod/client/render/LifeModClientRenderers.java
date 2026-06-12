@@ -4,6 +4,7 @@ import com.lifemod.LifeModIds;
 import com.lifemod.registry.ModEntities;
 
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 
 /** Registers a renderer for every mod entity. */
 public final class LifeModClientRenderers {
@@ -11,6 +12,9 @@ public final class LifeModClientRenderers {
     }
 
     public static void init() {
+        // Custom model layers.
+        ModelLayerRegistry.registerModelLayer(DeerModel.LAYER, DeerModel::createBodyLayer);
+
         // Faction NPCs — villager model, texture picked by the entity.
         EntityRendererRegistry.register(ModEntities.FACTION_VILLAGER, FactionNpcRenderer::new);
         EntityRendererRegistry.register(ModEntities.FACTION_LEADER, FactionNpcRenderer::new);

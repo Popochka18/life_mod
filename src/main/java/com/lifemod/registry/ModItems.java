@@ -10,6 +10,8 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+// VERIFY-MAPPING: net.minecraft.world.food.FoodProperties
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ToolMaterial;
 
@@ -47,6 +49,16 @@ public final class ModItems {
 
     public static final Item HOUSE_DEED = register("house_deed",
             key -> new DeedItem(new Item.Properties().stacksTo(1).setId(key)));
+
+    // Deer meat, ported from Better-on-Java (Better on Bedrock): nutrition 2/4, saturation 0.8.
+    public static final Item RAW_DEER_MEAT = register("raw_deer_meat",
+            key -> new Item(new Item.Properties()
+                    .food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.8F).build())
+                    .setId(key)));
+    public static final Item COOKED_DEER_MEAT = register("cooked_deer_meat",
+            key -> new Item(new Item.Properties()
+                    .food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.8F).build())
+                    .setId(key)));
 
     private ModItems() {
     }

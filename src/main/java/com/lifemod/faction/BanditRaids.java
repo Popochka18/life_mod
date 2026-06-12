@@ -1,6 +1,7 @@
 package com.lifemod.faction;
 
 import com.lifemod.entity.BanditEntity;
+import com.lifemod.entity.FactionLeaderEntity;
 import com.lifemod.registry.ModEntities;
 
 import net.minecraft.network.chat.Component;
@@ -78,6 +79,19 @@ public final class BanditRaids {
             bandit.setPos(x + 0.5, y, z + 0.5);
             bandit.setPersistenceRequired(); // VERIFY-MAPPING: Mob#setPersistenceRequired
             level.addFreshEntity(bandit);
+            spawnedAny = true;
+        }
+
+        // The ataman leads the raid — talk to him for kill quests.
+        int atamanY = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, centerX, centerZ);
+        FactionLeaderEntity ataman = ModEntities.FACTION_LEADER.create(level, EntitySpawnReason.EVENT);
+
+        if (ataman != null) {
+            ataman.setFaction(Faction.BANDITS);
+            ataman.setProfession("ataman");
+            ataman.setPos(centerX + 0.5, atamanY, centerZ + 0.5);
+            ataman.setPersistenceRequired();
+            level.addFreshEntity(ataman);
             spawnedAny = true;
         }
 
