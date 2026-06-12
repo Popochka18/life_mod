@@ -6,5 +6,6 @@ import net.fabricmc.api.ClientModInitializer
 object LifeModClient : ClientModInitializer {
     override fun onInitializeClient() {
         LifeModClientRenderers.init()
+        LifeModKeys.init()
     }
 }

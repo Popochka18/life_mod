@@ -83,5 +83,17 @@
   "message.life-mod.war.line": "%1$s are at war with %2$s",
   "message.life-mod.war.declared": "%1$s declared war on %2$s!",
   "message.life-mod.war.peace": "%1$s made peace with %2$s.",
-  "message.life-mod.war.unchanged": "Nothing changed between %1$s and %2$s."
+  "message.life-mod.war.unchanged": "Nothing changed between %1$s and %2$s.",
+
+  "key.life-mod.journal": "Open Journal (Quests & Factions)",
+  "key.categories.life-mod.main": "Life Mod",
+  "key.category.life-mod.main": "Life Mod",
+  "screen.life-mod.journal.title": "Journal",
+  "screen.life-mod.journal.reputation": "Faction reputation",
+  "screen.life-mod.journal.no_reputation": "No faction knows you yet.",
+  "screen.life-mod.journal.quests": "Active quests",
+  "screen.life-mod.journal.no_quests": "No active quests — talk to a settlement leader.",
+  "screen.life-mod.journal.quest.gather": "%1$s: bring %2$s × %3$s",
+  "screen.life-mod.journal.quest.kill": "%1$s: slay %2$s × %3$s",
+  "screen.life-mod.journal.quest.reward": "Reward: %1$s emeralds, +%2$s reputation"
 }
