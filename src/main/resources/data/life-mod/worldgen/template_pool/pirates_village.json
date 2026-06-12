@@ -5,7 +5,7 @@
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "life-mod:pirates_village",
+        "location": "life-mod:pirates_village/center",
         "processors": "minecraft:empty",
         "projection": "rigid"
       }

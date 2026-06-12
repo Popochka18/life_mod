@@ -5,7 +5,7 @@
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "life-mod:elves_village",
+        "location": "life-mod:elves_village/center",
         "processors": "minecraft:empty",
         "projection": "rigid"
       }
